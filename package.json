@@ -1,0 +1,27 @@
+{
+  "name": "doc_task",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@apollo/server": "^4.11.2",
+    "apollo-server-errors": "^3.3.1",
+    "apollo-server-express": "^3.13.0",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "graphql": "^16.9.0",
+    "install": "^0.13.0",
+    "npm": "^10.9.0",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
+  }
+}
