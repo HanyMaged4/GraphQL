@@ -1,0 +1,47 @@
+# schema
+
+# post
+---------------------------------------
+-- Table: public.post
+
+-- DROP TABLE IF EXISTS public.post;
+
+CREATE TABLE IF NOT EXISTS public.post
+(
+    id integer NOT NULL DEFAULT nextval('post_id_seq'::regclass),
+    title character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    content character varying(500) COLLATE pg_catalog."default",
+    createdat character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    editor_id integer NOT NULL,
+    CONSTRAINT post_pkey PRIMARY KEY (id),
+    CONSTRAINT post_editor_id_fkey FOREIGN KEY (editor_id)
+        REFERENCES public.editor (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE CASCADE
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.post
+    OWNER to postgres;
+---------------------------------------
+# editor
+---------------------------------------
+-- Table: public.editor
+
+-- DROP TABLE IF EXISTS public.editor;
+
+CREATE TABLE IF NOT EXISTS public.editor
+(
+    id integer NOT NULL DEFAULT nextval('editor_id_seq'::regclass),
+    name character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    email character varying(255) COLLATE pg_catalog."default",
+    password character varying(100) COLLATE pg_catalog."default" NOT NULL,
+    CONSTRAINT editor_pkey PRIMARY KEY (id),
+    CONSTRAINT editor_email_key UNIQUE (email)
+)
+
+TABLESPACE pg_default;
+
+ALTER TABLE IF EXISTS public.editor
+    OWNER to postgres;
